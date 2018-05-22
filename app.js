@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const { Client } = require('pg');
+const pg = new Client();
 const http = require("http");
 const port = process.env.PORT;
 
@@ -24,8 +26,22 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === 'request') {
-    msg.reply('works');
+  var msgSplit = msg.content.split('.');
+  if (msgSplit[0] === 'request') {
+    if (msgSplit[1] === 'partner') {
+      if (msgSplit[2].startsWith('(') & msgSplit[2].endsWith('(')) {
+        msgSplit[2].slice(1, -1);
+        var msgSplit2 = msgSplit[2].split(', ');
+        var msgSplit3 = [];
+        for (i = 0; i < msgSplit2.length * 2; i++) {
+          var temp = msgSplit2[i].split(': ');
+          msgSplit3.push(temp[1], temp[2]);
+        }
+        if (msgSplit3[0] === 'name') {
+          if (msgSplit[2] === '
+        }
+      }
+    }
   }
 });
 
