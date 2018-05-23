@@ -43,7 +43,7 @@ client.on('message', msg => {
             if (msgSplit[2] === 'desc' | msgSplit[2] === 'description') {
               client.fetchUser(240550416129982464).then(user => {
                 user.send(msgSplit[2]);
-              )};
+              });
             }
           }
         }
