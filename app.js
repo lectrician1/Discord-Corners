@@ -26,6 +26,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+  console.log(msg.guild.roles.toString);
   var msgSplit = msg.content.split('.');
   if (msgSplit[0] === 'request') {
     if (msgSplit[1] === 'partner') {
@@ -37,8 +38,14 @@ client.on('message', msg => {
           var temp = msgSplit2[i].split(': ');
           msgSplit3.push(temp[1], temp[2]);
         }
-        if (msgSplit3[0] === 'name') {
-          if (msgSplit[2] === '
+        if (msgSplit3[0] === 'invite') {
+          if (msgSplit[1].includes('discord.gg')) {
+            if (msgSplit[2] === 'desc' | msgSplit[2] === 'description') {
+              client.fetchUser(240550416129982464).then(user => {
+                user.send(msgSplit[2]);
+              }
+            }
+          }
         }
       }
     }
