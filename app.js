@@ -37,11 +37,12 @@ client.on('message', msg => {
         var msgSplit2 = msgSplit[2].split(', ');
         console.log(msgSplit2);
         var msgSplit3 = [];
-        for (i = 0; i < msgSplit2.length * 2; i++) {
+        for (i = 0; i < msgSplit2.length; i++) {
           console.log('looping' + i);
-          // var temp = msgSplit2[i].split(': ');
-          // msgSplit3.push(temp[1], temp[2]);
+          var temp = msgSplit2[i].split(': ');
+          msgSplit3.push(temp[1], temp[2]);
         }
+        console.log(msgSplit3);
         if (msgSplit3[0] === 'invite') {
           console.log('4 received');
           if (msgSplit[1].includes('discordgg')) {
