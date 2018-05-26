@@ -26,24 +26,25 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  console.log(msg.guild.roles.toString);
   var msgSplit = msg.content.split('.');
   if (msgSplit[0] === 'request') {
     console.log('1 received');
     if (msgSplit[1] === 'partner') {
       console.log('2 received');
       console.log(msgSplit[2]);
-      if (msgSplit[2].startsWith('(') && msgSplit[2].endsWith(')')) {
+      if (msgSplit[2].startsWith('(') & msgSplit[2].endsWith(')')) {
         console.log('3 received');
         msgSplit[2].slice(1, -1);
         var msgSplit2 = msgSplit[2].split(', ');
         var msgSplit3 = [];
         for (i = 0; i < msgSplit2.length * 2; i++) {
+          console.log('looping' + i);
           var temp = msgSplit2[i].split(': ');
           msgSplit3.push(temp[1], temp[2]);
         }
         if (msgSplit3[0] === 'invite') {
-          if (msgSplit[1].includes('discord.gg')) {
+          console.log('4 received');
+          if (msgSplit[1].includes('discordgg')) {
             if (msgSplit[2] === 'desc' | msgSplit[2] === 'description') {
               client.fetchUser(240550416129982464).then(user => {
                 user.send(msgSplit[2]);
