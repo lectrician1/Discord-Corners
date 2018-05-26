@@ -29,8 +29,11 @@ client.on('message', msg => {
   console.log(msg.guild.roles.toString);
   var msgSplit = msg.content.split('.');
   if (msgSplit[0] === 'request') {
+    console.log('1 received');
     if (msgSplit[1] === 'partner') {
+      console.log('2 received');
       if (msgSplit[2].startsWith('(') & msgSplit[2].endsWith('(')) {
+        console.log('3 received');
         msgSplit[2].slice(1, -1);
         var msgSplit2 = msgSplit[2].split(', ');
         var msgSplit3 = [];
