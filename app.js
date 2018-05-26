@@ -31,11 +31,11 @@ client.on('message', msg => {
     console.log('1 received');
     if (msgSplit[1] === 'partner') {
       console.log('2 received');
-      console.log(msgSplit[2]);
       if (msgSplit[2].startsWith('(') & msgSplit[2].endsWith(')')) {
         console.log('3 received');
         msgSplit[2].slice(1, -1);
         var msgSplit2 = msgSplit[2].split(', ');
+        console.log(msgSplit2);
         var msgSplit3 = [];
         for (i = 0; i < msgSplit2.length * 2; i++) {
           console.log('looping' + i);
