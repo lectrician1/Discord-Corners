@@ -32,6 +32,10 @@ client.on('message', msg => {
     console.log('1 received');
     if (msgSplit[1] === 'partner') {
       console.log('2 received');
+      if (msgSplit[2].startsWith('(')) {
+        console.log('3 received');
+      }
+      /*
       if (msgSplit[2].startsWith('(') & msgSplit[2].endsWith('(')) {
         console.log('3 received');
         msgSplit[2].slice(1, -1);
@@ -50,6 +54,7 @@ client.on('message', msg => {
             }
           }
         }
+        */
       }
     }
   }
