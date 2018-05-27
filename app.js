@@ -49,8 +49,7 @@ client.on('message', msg => {
             if (msgSplit3[2] === 'desc') {
               console.log('6 received');
               client.fetchUser('240550416129982464').then(user => {
-                console.log('sending...');
-                // user.send(msgSplit3[2]);
+                user.send(msgSplit3[2]);
               });
             }
           }
