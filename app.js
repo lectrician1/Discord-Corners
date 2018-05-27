@@ -46,6 +46,7 @@ client.on('message', msg => {
           console.log('4 received');
           if (msgSplit[1].includes('discordgg')) {
             if (msgSplit[2] === 'desc' | msgSplit[2] === 'description') {
+              console.log('4 received');
               client.fetchUser(240550416129982464).then(user => {
                 user.send(msgSplit[2]);
               });
