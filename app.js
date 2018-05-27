@@ -33,14 +33,13 @@ client.on('message', msg => {
       console.log('2 received');
       if (msgSplit[2].startsWith('(') & msgSplit[2].endsWith(')')) {
         console.log('3 received');
-        msgSplit[2].slice(1, -1);
         var msgSplit2 = msgSplit[2].split(', ');
         console.log(msgSplit2);
         var msgSplit3 = [];
         for (i = 0; i < msgSplit2.length; i++) {
           console.log('looping' + i);
           var temp = msgSplit2[i].split(': ');
-          msgSplit3.push(temp[1], temp[2]);
+          msgSplit3.push(temp[0], temp[1]);
         }
         console.log(msgSplit3);
         if (msgSplit3[0] === 'invite') {
