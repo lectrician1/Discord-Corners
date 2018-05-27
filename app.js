@@ -44,12 +44,12 @@ client.on('message', msg => {
         console.log(msgSplit3);
         if (msgSplit3[0] === '(invite') {
           console.log('4 received');
-          if (msgSplit[1].includes('discordgg')) {
+          if (msgSplit3[1].includes('discordgg')) {
             console.log('5 received');
-            if (msgSplit[2] == 'desc') {
+            if (msgSplit3[2] === 'desc') {
               console.log('6 received');
               client.fetchUser(240550416129982464).then(user => {
-                user.send(msgSplit[2]);
+                user.send(msgSplit3[2]);
               });
             }
           }
