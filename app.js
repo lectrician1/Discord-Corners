@@ -43,7 +43,7 @@ client.on('message', msg => {
           msgSplit3.push(temp[0], temp[1]);
         }
         console.log(msgSplit3);
-        if (msgSplit3[0] === 'invite') {
+        if (msgSplit3[0] === '(invite') {
           console.log('4 received');
           if (msgSplit3[1].includes('discordgg')) {
             console.log('5 received');
