@@ -51,13 +51,13 @@ client.on('message', msg => {
               console.log('6 received');
               var formated = `Invite: ${msgSplit3[1]} \n Owner: blah \n Description: ${msgSplit3[3]}`
               client.fetchUser('240550416129982464').then(user => {
-                user.send(formated);
-              }).then(msg => {
-                const filter = m => m.content === 'approve' | m.content === 'disapprove';
-                console.log(msg.channel.recipient.username);
-                  /*.awaitMessages(filter, { max: 4, time: 432000000, errors: ['time'] })
-                  .catch(collected => console.log('lectrician1 never responded'));
-                  */
+                user.send(formated).then(msg => {
+                  const filter = m => m.content === 'approve' | m.content === 'disapprove';
+                  console.log(msg.channel.recipient.username);
+                    /*.awaitMessages(filter, { max: 4, time: 432000000, errors: ['time'] })
+                    .catch(collected => console.log('lectrician1 never responded'));
+                    */
+                });
               });
             }
           }
