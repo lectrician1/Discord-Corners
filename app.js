@@ -49,11 +49,7 @@ client.on('message', msg => {
             console.log('5 received');
             if (msgSplit3[2] === 'desc') {
               console.log('6 received');
-              client.fetchInvite(msgSplit3[1]).then(invite => {
-                serverOwner = invite.guild.owner.nickname
-                serverOwnerID = invite.guild.ownerID
-              });
-              var formated = `Invite: ${msgSplit3[1]} \n Owner: ${serverOwner} \n Description: ${msgSplit3[3]}`
+              var formated = `Invite: ${msgSplit3[1]} \n Owner: blah \n Description: ${msgSplit3[3]}`
               client.fetchUser('240550416129982464').then(user => {
                 user.send(formated);
               }).then(msg => {
