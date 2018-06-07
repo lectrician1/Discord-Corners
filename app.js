@@ -54,9 +54,11 @@ client.on('message', msg => {
                 user.send(formated);
               }).then(msg => {
                 const filter = m => m.content === 'approve' | m.content === 'disapprove';
-                msg.channel.awaitMessages(filter, { max: 4, time: 432000000, errors: ['time'] })
+                console.log(msg.channel.recipient.username);
+                  /*.awaitMessages(filter, { max: 4, time: 432000000, errors: ['time'] })
                   .catch(collected => console.log('lectrician1 never responded'));
-              })
+                  */
+              });
             }
           }
         }
