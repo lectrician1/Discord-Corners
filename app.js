@@ -58,7 +58,7 @@ client.on('message', msg => {
                       collected.forEach(function (value) {
                         if (value === 'approve') {
                           client.fetchUser('240550416129982464').then(user => {
-                            console.log('approved');
+                            console.log('approve');
                             user.send('Approved!');
                           });
                         }
