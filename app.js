@@ -57,10 +57,16 @@ client.on('message', msg => {
                     .then(collected => {
                       collected.forEach(function (value) {
                         if (value === 'approve') {
-                          user.send('Approved!');
+                          client.fetchUser('240550416129982464').then(user => {
+                            console.log('approved');
+                            user.send('Approved!');
+                          });
                         }
                         else if (value === 'disapprove') {
-                          user.send('Please provide a reason for disapproving.');
+                          client.fetchUser('240550416129982464').then(user => {
+                            console.log('disapproved');
+                            user.send('Please provide a reason for disapproving.');
+                          });
                         }
                       });
                     })
