@@ -55,7 +55,7 @@ client.on('message', msg => {
                   const filter = m => m.content === 'approve' | m.content === 'disapprove';
                   msg.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
                     .then(collected => {
-                      console.log(collected.valueOf());
+                      console.log(collected.values());
                       user.send('yaya');
                       console.log('7 received');
                     })
