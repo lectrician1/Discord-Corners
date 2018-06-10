@@ -55,20 +55,8 @@ client.on('message', msg => {
                   const filter = m => m.content === 'approve' | m.content === 'disapprove';
                   msg.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
                     .then(collected => {
-                      collected.forEach(function (value) {
-                        if (value === 'approve') {
-                          client.fetchUser('240550416129982464').then(user => {
-                            console.log('approve');
-                            user.send('Approved!');
-                          });
-                        }
-                        else if (value === 'disapprove') {
-                          client.fetchUser('240550416129982464').then(user => {
-                            console.log('disapproved');
-                            user.send('Please provide a reason for disapproving.');
-                          });
-                        }
-                      });
+                      user.send('yaya');
+                      console.log('7 received');
                     })
                     .catch(collected => console.log('lectrician1 never responded'));
                 });
