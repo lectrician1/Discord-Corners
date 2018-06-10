@@ -50,7 +50,7 @@ client.on('message', msg => {
             if (msgSplit3[2] === 'desc') {
               console.log('6 received');
               var formated = `Invite: ${msgSplit3[1]} \n Owner: blah \n Description: ${msgSplit3[3]}`
-              client.fetchUser('240550416129982464').then(user => {
+              client.fetchUser(msg.author.id).then(user => {
                 user.send(formated).then(msg => {
                   const filter = m => m.content === 'approve' | m.content === 'disapprove';
                   msg.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
@@ -58,6 +58,10 @@ client.on('message', msg => {
                       if (collected.values().next().value == "approve") {
                         console.log('ok');
                         user.send('yaya');
+                      }
+                      else if (collected.values().next().value == "diapprove") {
+                        console.log('no');
+                        user.send('nono');
                       }
                       console.log('7 received');
                     })
