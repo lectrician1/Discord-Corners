@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const { Client } = require('pg');
 const pg = new Client();
+const Heroku = require('heroku-client');
+const heroku = new Heroku({ token: process.env.HEROKU_API_TOKEN });
 const http = require("http");
 const port = process.env.PORT;
 
@@ -23,6 +25,9 @@ server.listen(port, (err) => {
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  heroku.get('/apps', {body: {name: 'discord-corners'}}, '/builds').then(apps => {
+    console.log(apps);
+  });
 });
 
 client.on('message', msg => {
@@ -38,7 +43,6 @@ client.on('message', msg => {
           var temp = msgSplit2[i].split(': ');
           msgSplit3.push(temp[0], temp[1]);
         }
-        console.log(msgSplit3);
         if (msgSplit3[0] === '(invite') {
           if (msgSplit3[1].includes('discordgg')) {
             if (msgSplit3[2] === 'desc') {
