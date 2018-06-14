@@ -28,16 +28,6 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === "version") {
-    heroku.get('/apps/discord-corners/builds').then(builds => {
-      console.log(builds);
-      var buildResponse = JSON.parse(builds);
-      heroku.get(`/apps/discord-corners/releases/${buildResponse.release.id}`).then(release => {
-        var releaseResponse = JSON.parse(release);
-        msg.reply(`The current version is \`${releaseResponse.version}\`.`);
-      });
-    });
-  }
   var msgSplit = msg.content.split('.');
   if (msgSplit[0] === 'request') {
     if (msgSplit[1] === 'partner') {
