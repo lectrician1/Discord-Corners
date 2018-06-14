@@ -25,12 +25,14 @@ server.listen(port, (err) => {
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  heroku.get('/apps/discord-corners').then(apps => {
-    console.log(apps);
-  });
 });
 
 client.on('message', msg => {
+  if (msg.content === 'build') {
+    heroku.get('/apps/discord-corners/builds').then(apps => {
+      console.log(apps);
+    });
+  }
   var msgSplit = msg.content.split('.');
   if (msgSplit[0] === 'request') {
     if (msgSplit[1] === 'partner') {
