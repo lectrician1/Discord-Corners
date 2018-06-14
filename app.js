@@ -42,7 +42,6 @@ client.on('message', msg => {
         if (msgSplit3[0] === '(invite') {
           if (msgSplit3[1].includes('discordgg')) {
             if (msgSplit3[2] === 'desc') {
-              console.log('6 received');
               msg.author.createDM()
                 .then(DMchannel => {
                   var formated = `Invite: ${msgSplit3[1]} \n Owner: blah \n Description: ${msgSplit3[3]}`
@@ -50,17 +49,12 @@ client.on('message', msg => {
                   const filter = m => m.content === 'approve' | m.content === 'disapprove';
                   DMchannel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
                     .then(collected => {
-                      console.log(`Size: ${collected.size}`);
-                      console.log(collected.values());
                       if (collected.values().next().value == "approve") {
-                        console.log('ok');
-                        user.send('yaya');
+                        DMchannel.send('yaya');
                       }
                       else if (collected.values().next().value == "diapprove") {
-                        console.log('no');
-                        user.send('nono');
+                        DMchannel.send('nono');
                       }
-                      console.log('7 received');
                     })
                     .catch(collected => console.log('lectrician1 never responded'));
                 });
