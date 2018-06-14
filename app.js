@@ -25,7 +25,7 @@ server.listen(port, (err) => {
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  heroku.get('/apps/{discord-corners}/builds').then(apps => {
+  heroku.get('/apps/discord-corners').then(apps => {
     console.log(apps);
   });
 });
