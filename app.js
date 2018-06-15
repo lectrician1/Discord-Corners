@@ -43,14 +43,10 @@ client.on('message', msg => {
         }
         if (msgSplit3[0] === '(invite') {
           if (msgSplit3[1].includes('discord.gg/')) {
-            client.fetchInvite(msgSplit3[1])
-              .then(invite => {
-                console.log(invite.guild.owner.displayName);
-              });
             if (msgSplit3[2] === 'desc') {
               msg.author.createDM()
                 .then(DMchannel => {
-                  var formated = `Invite: ${msgSplit3[1]} \n Owner: blah \n Description: ${msgSplit3[3]}`
+                  var formated = `Invite: ${msgSplit3[1]} \n Description: ${msgSplit3[3]}`
                   DMchannel.send(formated);
                   const filter = m => m.content === 'approve' | m.content === 'disapprove';
                   DMchannel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
