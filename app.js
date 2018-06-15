@@ -72,6 +72,7 @@ client.on('message', msg => {
         }
         else {
           msg.reply('That is not a valid parameter. \`invite\` should be the first parameter.');
+        }
       }
     }
   }
