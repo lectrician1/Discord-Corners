@@ -75,9 +75,11 @@ client.on('message', msg => {
         else {
           msg.reply('That is not a valid parameter. \`invite\` should be the first parameter.');
         }
+      }
       else {
         msg.send('Parameters should be wrote in parentheses after the property.');
       }
+    }
     else {
       msg.reply('That is not a valid property of \`request\`.');
     }
