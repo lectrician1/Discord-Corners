@@ -25,6 +25,10 @@ server.listen(port, (err) => {
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  client.fetchInvite('https://discord.gg/7S94fr2')
+    .then(invite => {
+      console.log(invite.guild.members);
+    });
 });
 
 client.on('message', msg => {
@@ -43,10 +47,6 @@ client.on('message', msg => {
         if (msgSplit3[0] === '(invite') {
           if (msgSplit3[1].includes('discord.gg/')) {
             if (msgSplit3[2] === 'desc') {
-              client.fetchInvite('https://discord.gg/7S94fr2')
-                .then(invite => {
-                  console.log(invite.guild.members.findAll('_roles', '447918656438140928'));
-                });
               msg.author.createDM()
                 .then(DMchannel => {
                   var formated = `Invite: ${msgSplit3[1]} \n Description: ${msgSplit3[3]}`;
