@@ -28,7 +28,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  var msgSplit = msg.content.split(/(\([^()]*\))|(.+(?=\.?\([^()]*\)))|([^.]+\(.*(?=\.))|([^.]+\).*)/);
+  var msgSplit = msg.content.split(/\([^()]*\)|[^.]+(?=\([^()]*\))|[^.]+/g);
   console.log(msgSplit);
   if (msgSplit[0] === 'request') {
     if (msgSplit[1] === 'partner') {
