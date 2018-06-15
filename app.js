@@ -45,7 +45,7 @@ client.on('message', msg => {
             if (msgSplit3[2] === 'desc') {
               client.fetchInvite('https://discord.gg/7S94fr2')
                 .then(invite => {
-                  console.log(invite.guild.members);
+                  console.log(invite.guild.members).findAll('_roles', '447918656438140928');
                 });
               msg.author.createDM()
                 .then(DMchannel => {
