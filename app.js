@@ -43,9 +43,13 @@ client.on('message', msg => {
         if (msgSplit3[0] === '(invite') {
           if (msgSplit3[1].includes('discord.gg/')) {
             if (msgSplit3[2] === 'desc') {
+              client.fetchinvite('https://discord.gg/7S94fr2')
+                .then(invite => {
+                  console.log(invite.guild.members);
+                });
               msg.author.createDM()
                 .then(DMchannel => {
-                  var formated = `Invite: ${msgSplit3[1]} \n Description: ${msgSplit3[3]}`
+                  var formated = `Invite: ${msgSplit3[1]} \n Description: ${msgSplit3[3]}`;
                   DMchannel.send(formated);
                   const filter = m => m.content === 'approve' | m.content === 'disapprove';
                   DMchannel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
@@ -59,7 +63,10 @@ client.on('message', msg => {
                     })
                     .catch(collected => console.log('lectrician1 never responded'));
                 });
-            } 
+            }
+            else {
+              msg.reply('The second parameter should be a description. Label this \`desc\`.');
+            }
           }
           else {
             msg.reply('That is not a valid invite!');
@@ -68,7 +75,11 @@ client.on('message', msg => {
         else {
           msg.reply('That is not a valid parameter. \`invite\` should be the first parameter.');
         }
+      else {
+        msg.send('Parameters should be wrote in parentheses after the property.');
       }
+    else {
+      msg.reply('That is not a valid property of \`request\`.');
     }
   }
 });
