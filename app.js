@@ -42,7 +42,11 @@ client.on('message', msg => {
           msgSplit3.push(temp[0], temp[1]);
         }
         if (msgSplit3[0] === '(invite') {
-          if (msgSplit3[1].includes('discord.gg')) {
+          if (msgSplit3[1].includes('discord.gg/')) {
+            client.fetchInvite(msgSplit3[1])
+              .then(invite => {
+                console.log(invite.guild.owner.displayName);
+              });
             if (msgSplit3[2] === 'desc') {
               msg.author.createDM()
                 .then(DMchannel => {
@@ -62,7 +66,12 @@ client.on('message', msg => {
                 });
             } 
           }
+          else {
+            msg.reply('That is not a valid invite!');
+          }
         }
+        else {
+          msg.reply('That is not a valid parameter. \`invite\` should be the first parameter.');
       }
     }
   }
