@@ -28,7 +28,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  var msgSplit = msg.content.split('.');
+  var msgSplit = msg.content.split(/(\([^()]*\))|(.+(?=\.?\([^()]*\)))|([^.]+\(.*(?=\.))|([^.]+\).*)/g);
   if (msgSplit[0] === 'request') {
     if (msgSplit[1] === 'partner') {
       if (msgSplit[2].startsWith('(') & msgSplit[2].endsWith(')')) {
@@ -41,7 +41,7 @@ client.on('message', msg => {
           msgSplit3.push(temp[0], temp[1]);
         }
         if (msgSplit3[0] === '(invite') {
-          if (msgSplit3[1].includes('discordgg')) {
+          if (msgSplit3[1].includes('discord.gg')) {
             if (msgSplit3[2] === 'desc') {
               msg.author.createDM()
                 .then(DMchannel => {
