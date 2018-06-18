@@ -25,7 +25,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   client.fetchInvite('https://discord.gg/7S94fr2')
     .then(invite => {
-      console.log(invite.roles.get('447924736228458508').members.keyArray());
+      console.log(invite.guild.roles.get('447924736228458508').members.keyArray());
     });
 });
 
