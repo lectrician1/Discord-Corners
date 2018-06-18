@@ -25,7 +25,10 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   client.fetchInvite('https://discord.gg/7S94fr2')
     .then(invite => {
-      console.log(invite.guild.roles.get('447924736228458508'));
+      invite.guild.roles.get('447918656438140928').members.createDM
+        .then(DMchannel => {
+          DMchannel.send('Hey there lectrician1 testing the bot.');
+        });
     });
 });
 
