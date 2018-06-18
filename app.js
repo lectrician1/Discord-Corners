@@ -25,7 +25,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   client.fetchInvite('https://discord.gg/7S94fr2')
     .then(invite => {
-      console.log(invite.guild.members.find('username', 'lectrician1'));
+      console.log(invite.guild.members);
     });
 });
 
