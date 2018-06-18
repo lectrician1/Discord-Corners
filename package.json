@@ -3,8 +3,7 @@
   "main": "app.js",
   "dependencies": {
     "discord.js": "^11.3.2",
-    "pg": "^7.4.3",
-    "heroku-client": "^3.0.6"
+    "pg": "^7.4.3"
   },
   "devDependencies": {},
   "scripts": {
