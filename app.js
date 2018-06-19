@@ -39,6 +39,7 @@ client.on('message', msg => {
           var temp = splitParameter[i].split(': ');
           parameterValues.push(temp[0], temp[1]);
         }
+        console.log(parameterValues);
         if (parameterValues[0] === 'invite') {
           if (parameterValues[1].includes('discord.gg/')) {
             if (parameterValues[2] === 'desc') {
