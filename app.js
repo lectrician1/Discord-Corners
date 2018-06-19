@@ -30,11 +30,12 @@ client.on('message', msg => {
   if (msgMatch[0] === 'request') {
     if (msgMatch[1] === 'partner') {
       if (msgMatch[2].startsWith('(') & msgMatch[2].endsWith(')')) {
-        var parameter = msgMatch[2]
+        var parameter = msgMatch[2];
         var cutParameter = parameter.slice(1,-1);
+        console.log(cutParameter);
         var splitParameter = cutParameter.split(', ');
         var parameterValues = [];
-        for (i = 0; i <= splitParameter.length; i++) {
+        for (i = 0; i < splitParameter.length; i++) {
           var temp = splitParameter[i].split(': ');
           parameterValues.push(temp[0], temp[1]);
         }
