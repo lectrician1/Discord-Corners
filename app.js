@@ -26,22 +26,22 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  var msgSplit = msg.content.match(/\([^()]*\)|[^.]+(?=\([^()]*\))|[^.]+/g);
-  if (msgSplit[0] === 'request') {
-    if (msgSplit[1] === 'partner') {
-      if (msgSplit[2].startsWith('(') & msgSplit[2].endsWith(')')) {
-        var msgSplit_1 = msgSplit[2]
-        msgSplit_1.slice(1,-1);
-        var msgSplit2 = msgSplit_1.split(', ');
-        var msgSplit3 = [];
-        for (i = 0; i < msgSplit2.length; i++) {
-          var temp = msgSplit2[i].split(': ');
-          msgSplit3.push(temp[0], temp[1]);
+  var msgMatch = msg.content.match(/\([^()]*\)|[^.]+(?=\([^()]*\))|[^.]+/g);
+  if (msgMatch[0] === 'request') {
+    if (msgMatch[1] === 'partner') {
+      if (msgMatch[2].startsWith('(') & msgMatch[2].endsWith(')')) {
+        var parameter = msgMatch[2]
+        parameter.slice(1,-1);
+        var subParameter = parameter.split(', ');
+        var parameterValues = [];
+        for (i = 0; i < subParameter.length; i++) {
+          var temp = subParameter[i].split(': ');
+          parameterValues.push(temp[0], temp[1]);
         }
-        if (msgSplit3[0] === '(invite') {
-          if (msgSplit3[1].includes('discord.gg/')) {
-            if (msgSplit3[2] === 'desc') {
-              if (msgSplit.length === 4) {
+        if (parameterValues[0] === '(invite') {
+          if (parameterValues[1].includes('discord.gg/')) {
+            if (parameterValues[2] === 'desc') {
+              if (parameterValues.length === 4) {
                 client.fetchInvite('https://discord.gg/7S94fr2')
                   .then(invite => {
                     var requestResult = false;
