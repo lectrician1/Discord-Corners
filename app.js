@@ -50,7 +50,7 @@ client.on('message', msg => {
                         .then(user => {
                           user.createDM()
                             .then(DMchannel => {
-                              var formated = `Please reply \`approve\` or \`disapprove\` to approve or disapprove of the following request.\n Invite: ${msgSplit3[1]} \n Description: ${msgSplit3[3]}`;
+                              var formated = `Please reply \`approve\` or \`disapprove\` to approve or disapprove of the following request.\n Invite: ${parameterValues[1]} \n Description: ${parameterValues[3]}`;
                               DMchannel.send(formated);
                               msg.reply('Your request is in the process of being approved!');
                               if (requestResult === false) {
