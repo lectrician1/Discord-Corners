@@ -41,7 +41,7 @@ client.on('message', msg => {
         if (msgSplit3[0] === '(invite') {
           if (msgSplit3[1].includes('discord.gg/')) {
             if (msgSplit3[2] === 'desc') {
-              if (msgSplit[3].length > 0) {
+              if (msgSplit.length < 4) {
                 client.fetchInvite('https://discord.gg/7S94fr2')
                   .then(invite => {
                     var requestResult = false;
