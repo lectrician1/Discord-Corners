@@ -44,7 +44,7 @@ client.on('message', msg => {
               if (msgSplit[3].length > 0) {
                 client.fetchInvite('https://discord.gg/7S94fr2')
                   .then(invite => {
-                    var requestResult === false;
+                    var requestResult = false;
                     invite.guild.roles.get('458768532210188308').members.forEach(function (key) {
                       client.fetchUser(key)
                         .then(user => {
