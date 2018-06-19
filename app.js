@@ -31,14 +31,14 @@ client.on('message', msg => {
     if (msgMatch[1] === 'partner') {
       if (msgMatch[2].startsWith('(') & msgMatch[2].endsWith(')')) {
         var parameter = msgMatch[2]
-        parameter.slice(1,-1);
-        var subParameter = parameter.split(', ');
+        var cutParameter = parameter.slice(1,-1);
+        var splitParameter = cutParameter.split(', ');
         var parameterValues = [];
-        for (i = 0; i < subParameter.length; i++) {
-          var temp = subParameter[i].split(': ');
+        for (i = 0; i < splitParameter.length; i++) {
+          var temp = splitParameter[i].split(': ');
           parameterValues.push(temp[0], temp[1]);
         }
-        if (parameterValues[0] === '(invite') {
+        if (parameterValues[0] === 'invite') {
           if (parameterValues[1].includes('discord.gg/')) {
             if (parameterValues[2] === 'desc') {
               if (parameterValues.length === 4) {
