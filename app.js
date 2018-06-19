@@ -23,18 +23,6 @@ server.listen(port, (err) => {
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.fetchInvite('https://discord.gg/7S94fr2')
-    .then(invite => {
-      invite.guild.roles.get('447918656438140928').members.forEach(function (key) {
-        client.fetchUser(key)
-          .then(user => {
-            user.createDM()
-              .then(DMchannel => {
-                DMchannel.send('testing');
-              });
-          }); 
-      });
-    });
 });
 
 client.on('message', msg => {
@@ -53,22 +41,41 @@ client.on('message', msg => {
         if (msgSplit3[0] === '(invite') {
           if (msgSplit3[1].includes('discord.gg/')) {
             if (msgSplit3[2] === 'desc') {
-              msg.author.createDM()
-                .then(DMchannel => {
-                  var formated = `Invite: ${msgSplit3[1]} \n Description: ${msgSplit3[3]}`;
-                  DMchannel.send(formated);
-                  const filter = m => m.content === 'approve' | m.content === 'disapprove';
-                  DMchannel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
-                    .then(collected => {
-                      if (collected.values().next().value == "approve") {
-                        DMchannel.send('yaya');
-                      }
-                      else if (collected.values().next().value == "diapprove") {
-                        DMchannel.send('nono');
-                      }
-                    })
-                    .catch(collected => console.log('lectrician1 never responded'));
-                });
+              if (msgSplit[3].length > 0) {
+                client.fetchInvite('https://discord.gg/7S94fr2')
+                  .then(invite => {
+                    var requestResult === false;
+                    invite.guild.roles.get('458768532210188308').members.forEach(function (key) {
+                      client.fetchUser(key)
+                        .then(user => {
+                          user.createDM()
+                            .then(DMchannel => {
+                              var formated = `Please reply \`approve\` or \`disapprove\` to approve or disapprove of the following request.\n Invite: ${msgSplit3[1]} \n Description: ${msgSplit3[3]}`;
+                              DMchannel.send(formated);
+                              msg.reply('Your request is in the process of being approved!');
+                              if (requestResult === false) {
+                                const filter = m => m.content === 'approve' | m.content === 'disapprove';
+                                DMchannel.awaitMessages(filter, { max: 1, time: 86400000, errors: ['time'] })
+                                  .then(collected => {
+                                    if (collected.values().next().value == "approve") {
+                                      requestResult === true;
+                                      DMchannel.send('Request approved.');
+                                    }
+                                    else if (collected.values().next().value == "disapprove") {
+                                      requestResult === true;
+                                      DMchannel.send('Request rejected.');
+                                    }
+                                  })
+                                  .catch(collected => console.log(`${DMchannel.recipient.username} never responded to request`));
+                              }
+                              else {
+                                DMchannel.send('The request has been approved');
+                              }
+                            });
+                        }); 
+                    });
+                  });
+                }
             }
             else {
               msg.reply('The second parameter should be a description. Label this \`desc\`.');
