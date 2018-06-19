@@ -34,7 +34,7 @@ client.on('message', msg => {
         var cutParameter = parameter.slice(1,-1);
         var splitParameter = cutParameter.split(', ');
         var parameterValues = [];
-        for (i = 0; i < splitParameter.length; i++) {
+        for (i = 0; i <= splitParameter.length; i++) {
           var temp = splitParameter[i].split(': ');
           parameterValues.push(temp[0], temp[1]);
         }
