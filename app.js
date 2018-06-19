@@ -41,7 +41,7 @@ client.on('message', msg => {
         if (msgSplit3[0] === '(invite') {
           if (msgSplit3[1].includes('discord.gg/')) {
             if (msgSplit3[2] === 'desc') {
-              if (msgSplit.length < 4) {
+              if (msgSplit.length === 4) {
                 client.fetchInvite('https://discord.gg/7S94fr2')
                   .then(invite => {
                     var requestResult = false;
@@ -75,7 +75,10 @@ client.on('message', msg => {
                         }); 
                     });
                   });
-                }
+              }
+              else {
+                msg.reply('Please include a description of your server with your request.');
+              }
             }
             else {
               msg.reply('The second parameter should be a description. Label this \`desc\`.');
