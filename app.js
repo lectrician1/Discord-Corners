@@ -43,7 +43,7 @@ client.on('message', msg => {
         if (parameterValues[0] === 'invite') {
           if (parameterValues[1].includes('discord.gg/')) {
             if (parameterValues[2] === 'desc') {
-              if (parameterValues.length === 4) {
+              if (parameterValues.length === 4 & parameterValues[3].length > 0) {
                 client.fetchInvite('https://discord.gg/7S94fr2')
                   .then(invite => {
                     var requestResult = false;
