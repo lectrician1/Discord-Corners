@@ -60,18 +60,18 @@ client.on('message', msg => {
                                 DMchannel.awaitMessages(filter, { max: 1, time: 86400000, errors: ['time'] })
                                   .then(collected => {
                                     if (collected.values().next().value == "approve") {
-                                      requestResult === true;
+                                      requestResult === 'approved';
                                       DMchannel.send('Request approved.');
                                     }
                                     else if (collected.values().next().value == "disapprove") {
-                                      requestResult === true;
+                                      requestResult === 'rejected';
                                       DMchannel.send('Request rejected.');
                                     }
                                   })
                                   .catch(collected => console.log(`${DMchannel.recipient.username} never responded to request`));
                               }
                               else {
-                                DMchannel.send('The request has been approved');
+                                DMchannel.send(`The request has already been ${requestResult}.`);
                               }
                             });
                         }); 
