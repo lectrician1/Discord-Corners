@@ -54,28 +54,28 @@ client.on('message', msg => {
                             .then(DMchannel => {
                               var formated = `Please reply \`approve\` or \`disapprove\` to approve or disapprove of the following request.\n Invite: ${parameterValues[1]} \n Description: ${parameterValues[3]}`;
                               DMchannel.send(formated);
-                              msg.reply('Your request is in the process of being approved!');
-                              if (requestResult === false) {
                                 const filter = m => m.content === 'approve' | m.content === 'disapprove';
                                 DMchannel.awaitMessages(filter, { max: 1, time: 86400000, errors: ['time'] })
                                   .then(collected => {
-                                    if (collected.values().next().value == "approve") {
-                                      requestResult === 'approved';
-                                      DMchannel.send('Request approved.');
-                                    }
-                                    else if (collected.values().next().value == "disapprove") {
-                                      requestResult === 'rejected';
-                                      DMchannel.send('Request rejected.');
+                                    if (requestResult === false) {
+                                      if (collected.values().next().value == "approve") {
+                                        requestResult === 'approved';
+                                        DMchannel.send('Request approved.');
+                                      }
+                                      else if (collected.values().next().value == "disapprove") {
+                                        requestResult === 'rejected';
+                                        DMchannel.send('Request rejected.');
+                                      }
+                                    else {
+                                      DMchannel.send(`The request has already been ${requestResult}.`);
                                     }
                                   })
                                   .catch(collected => console.log(`${DMchannel.recipient.username} never responded to request`));
                               }
-                              else {
-                                DMchannel.send(`The request has already been ${requestResult}.`);
-                              }
                             });
                         }); 
                     });
+                    msg.reply('Your request is in the process of being approved!');
                   });
               }
               else {
