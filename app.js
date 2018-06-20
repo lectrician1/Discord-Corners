@@ -66,6 +66,7 @@ client.on('message', msg => {
                                         requestResult === 'rejected';
                                         DMchannel.send('Request rejected.');
                                       }
+                                    }
                                     else {
                                       DMchannel.send(`The request has already been ${requestResult}.`);
                                     }
