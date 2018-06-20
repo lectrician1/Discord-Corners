@@ -71,7 +71,6 @@ client.on('message', msg => {
                                     }
                                   })
                                   .catch(collected => console.log(`${DMchannel.recipient.username} never responded to request`));
-                              }
                             });
                         }); 
                     });
